@@ -13,8 +13,6 @@
 <div id="checking">Checking...</div>
 <div    align="center">
     <h1> SignUp!</h1>
-    
-     <!--<form action="/SignUp/Add" method="post">-->
 
      @using (Html.BeginForm("Add", "SignUp", FormMethod.Post))
     {
@@ -31,7 +29,7 @@
             
    <tr>
                  <td>@Html.LabelFor(model => model.email)</td>
-      <td>@Html.TextBoxFor(model => model.email,new { id = "email",name="email" })</td><td> <input type="button" id="b1" value="Check Availabilty" /><br /></td>
+      <td>@Html.TextBoxFor(model => model.email,new { id = "email",name="email" })</td>@*<td> <input type="button" id="b1" value="Check Availabilty" /><br /></td>*@
       <td>@Html.ValidationMessageFor(model=>model.email)</td>
         </tr>
              <tr>
@@ -82,11 +80,11 @@
               </select></td>  <td>@Html.ValidationMessageFor(model=>model.Gender)</td>
 
     </tr>
-   <tr>
+  @* <tr>
                  <td> Date Of Birth:</td>
        <td>@Html.TextBoxFor(model => model.dob,new { id = "dob",name="dob" })</td>  <td>@Html.ValidationMessageFor(model=>model.dob)</td>
 
-   </tr>
+   </tr>*@
    <tr>
                  <td><input type="submit" id="b2" value="SignUp" /></td></tr>
              </table>
@@ -96,28 +94,6 @@
     @Scripts.Render("~/bundles/jquery")
     <script>
 
-        $(document).ready(function () {
-
-            $('#checking').hide();
-
-            $('#b1').click(function () {
-
-                var email = $('#email').val();
-
-                //alert('User Name ='+ userName);
-                $('#checking').show();
-                $.getJSON("/SignUp/CheckUserName?email=" + email, function (data) {
-                    $('#checking').hide();
-                    if (data) {
-                        $('#result').text("User already exists in database");
-
-                    }
-                    else {
-                        $('#result').text("User Name is available");
-                    }
-                });
-
-            });
 
         });
     </script>
